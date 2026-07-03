@@ -3,8 +3,30 @@ import os
 import re
 
 
+def _resolve_company_number(data: dict) -> str | None:
+    """Return a stable company id from common agent output shapes."""
+    company_number = data.get("company_number")
+    if company_number not in (None, "", "null", "NIL"):
+        return str(company_number)
+
+    profile = data.get("company_profile")
+    if isinstance(profile, dict):
+        for key in ("registration_no", "company_number"):
+            value = profile.get(key)
+            if value not in (None, "", "null", "NIL"):
+                return str(value)
+
+    registration_no = data.get("registration_no")
+    if registration_no not in (None, "", "null", "NIL"):
+        return str(registration_no)
+
+    return None
+
+
 def _strip_code_fence(text: str) -> str:
     """Remove ```json ... ``` or ``` ... ``` wrapper if the model returned one."""
+    if not text:
+        raise ValueError("Model output is empty; cannot parse JSON.")
     text = text.strip()
     match = re.match(r"^```(?:json)?\s*(.*?)\s*```$", text, flags=re.DOTALL)
     if match:
@@ -89,10 +111,18 @@ def save_company_json(model_output: str, json_path: str) -> None:
     """
     cleaned = _strip_code_fence(model_output)
     data = json.loads(cleaned)
+    if not isinstance(data, dict):
+        raise ValueError("Model output must be a JSON object.")
 
-    company_number = data.get("company_number")
+    company_number = _resolve_company_number(data)
     if not company_number:
-        raise ValueError("Model output is missing 'company_number'; cannot save.")
+        raise ValueError(
+            "Model output is missing 'company_number' (and no registration number "
+            "could be inferred). The PDF may not have been read correctly."
+        )
+
+    data = dict(data)
+    data["company_number"] = company_number
 
     # Everything except company_number is treated as the "company_profile" payload.
     new_profile = {k: v for k, v in data.items() if k != "company_number"}

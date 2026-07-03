@@ -1,7 +1,10 @@
-import fitz  # PyMuPDF
 import os
 
-os.environ["TESSDATA_PREFIX"] = r"C:\Program Files\Tesseract-OCR\tessdata"
+import pymupdf as fitz
+
+from tools import configure_tesseract, is_ocr_available, ocr_unavailable_message
+
+configure_tesseract()
 
 def read_pdf(file_path):
     if not os.path.isfile(file_path):
@@ -20,17 +23,19 @@ def read_pdf(file_path):
 
             # If no text exists, perform OCR
             if not text:
-                print("[No embedded text found. Running OCR...]")
-
-                try:
-                    tp = page.get_textpage_ocr(
-                        language="eng",
-                        dpi=300
-                    )
-                    text = page.get_text(textpage=tp).strip()
-                except Exception as e:
-                    print(f"OCR failed: {e}")
-                    text = ""
+                if not is_ocr_available():
+                    print(f"[OCR unavailable: {ocr_unavailable_message()}]")
+                else:
+                    print("[No embedded text found. Running OCR...]")
+                    try:
+                        tp = page.get_textpage_ocr(
+                            language="eng",
+                            dpi=300,
+                        )
+                        text = page.get_text(textpage=tp).strip()
+                    except Exception as e:
+                        print(f"OCR failed: {e}")
+                        text = ""
 
             if text:
                 print(text)

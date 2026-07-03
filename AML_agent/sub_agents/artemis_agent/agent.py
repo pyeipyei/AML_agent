@@ -11,7 +11,7 @@ load_dotenv()
 MODEL = LiteLlm("openai/gpt-4o-mini")
 
 # --- Load the Artemis OpenAPI spec -----------------------------------------
-ARTEMIS_SPEC_PATH = os.getenv("ARTEMIS_SPEC_PATH", "../../specs/artemis_openapi.json")
+ARTEMIS_SPEC_PATH = os.getenv("ARTEMIS_SPEC_PATH", "specs/artemis_openapi.json")
 
 with open(ARTEMIS_SPEC_PATH, "r", encoding="utf-8") as f:
     _spec_text = f.read()
@@ -25,8 +25,6 @@ artemis_toolset = OpenAPIToolset(
     spec_str=_spec_text,
     spec_str_type=_spec_type,
 )
-
-artemis_tools = artemis_toolset.get_tools()
 
 artemis_agent = Agent(
     name="artemis_agent",

@@ -7,7 +7,6 @@ through the ADK multi-agent pipeline, and downloading summaries.
 
 import streamlit as st
 import os
-import shutil
 from main import run_pipeline
 import asyncio
 import base64
@@ -333,26 +332,26 @@ with left_col:
         # Process button
         if st.button("Process Documents", use_container_width=True, type="primary"):
 
-            # Save uploaded files to disk
-            file_paths = []
-            if os.path.exists(UPLOADS_DIR):
-                shutil.rmtree(UPLOADS_DIR)
             os.makedirs(UPLOADS_DIR, exist_ok=True)
 
+            uploaded_names = []
             for uf in uploaded_files:
                 file_path = os.path.join(UPLOADS_DIR, uf.name)
                 with open(file_path, "wb") as f:
                     f.write(uf.getvalue())
-                file_paths.append(file_path)
+                uploaded_names.append(uf.name)
 
             with st.spinner("Filtering and processing documents..."):
                 try:
-                    # Pass the upload directory to your core pipeline execution
-                    final_json_string = asyncio.run(
-                        run_pipeline(UPLOADS_DIR)  #############
+                    run_result = asyncio.run(
+                        run_pipeline(UPLOADS_DIR, filenames=uploaded_names)
                     )
-                    st.session_state.final_result = final_json_string
-                    st.success("Processing complete!")
+                    st.session_state.run_result = run_result
+                    st.session_state.final_result = run_result.get("output_pdf")
+                    st.success(
+                        f"Processing complete! Results saved to "
+                        f"`{run_result['run_dir']}` (run #{run_result['run_id']})."
+                    )
                 except Exception as e:
                     st.error(f"An error occurred: {e}")
 
@@ -364,17 +363,21 @@ with right_col:
     </div>
     """, unsafe_allow_html=True)
 
-    OUTPUT_PDF_PATH = os.path.join(BASE_DIR, "output", "result_KYC.pdf")
+    run_result = st.session_state.get("run_result") or {}
+    OUTPUT_PDF_PATH = run_result.get("output_pdf") or st.session_state.get("final_result")
 
-    if st.session_state.get("final_result") and os.path.exists(OUTPUT_PDF_PATH):
+    if OUTPUT_PDF_PATH and os.path.exists(OUTPUT_PDF_PATH):
         with open(OUTPUT_PDF_PATH, "rb") as f:
             pdf_bytes = f.read()
+
+        if run_result.get("run_id"):
+            st.caption(f"Run #{run_result['run_id']} — `{run_result.get('run_dir', '')}`")
 
         # Download button
         st.download_button(
             label="⬇️ Download KYC Report",
             data=pdf_bytes,
-            file_name="result_KYC.pdf",
+            file_name=f"result_KYC_run_{run_result.get('run_id', 'latest')}.pdf",
             mime="application/pdf",
             use_container_width=True,
         )
