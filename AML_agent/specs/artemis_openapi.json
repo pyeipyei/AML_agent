@@ -1,0 +1,199 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Artemis Records API",
+    "version": "1.0.0",
+    "description": "Artemis case records API. Search-by-name uses POST with a JSON body; no authentication is required for this endpoint (temporary). Responses use a unified entityInformation shape (corporateSpecific and individualSpecific are always objects; the non-applicable branch is empty)."
+  },
+  "servers": [
+    {
+      "url": "https://api-demoaml.atenxion.ai/api",
+      "description": "Production Server"
+    }
+  ],
+  "paths": {
+    "/artemis/search-by-name": {
+      "post": {
+        "operationId": "artemisSearchByName",
+        "tags": ["Artemis Records"],
+        "summary": "Search records by display name",
+        "description": "Finds all Artemis documents (INDIVIDUAL and CORPORATE) whose entityInformation.generalDetails.name contains the given string. Matching is case-insensitive. Returns every match with no limit. Each item in matches includes entityInformation.corporateSpecific and entityInformation.individualSpecific as objects; for INDIVIDUAL records corporateSpecific is {}, for CORPORATE records individualSpecific is {}.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchByNameRequest"
+              },
+              "example": {
+                "name": "Sunway"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Search completed; matches may be an empty array.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchByNameResponse"
+                },
+                "example": {
+                  "query": { "name": "Sunway" },
+                  "count": 1,
+                  "matches": []
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request — missing or empty name in JSON body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                },
+                "example": {
+                  "message": "Body must include a non-empty name string."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error while searching records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                },
+                "example": {
+                  "message": "Failed to search records by name"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ErrorMessage": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "description": "Optional error code (e.g. TOKEN_EXPIRED)"
+          }
+        }
+      },
+      "SearchByNameRequest": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Substring to match (case-insensitive) against entityInformation.generalDetails.name"
+          }
+        }
+      },
+      "SearchByNameResponse": {
+        "type": "object",
+        "required": ["query", "count", "matches"],
+        "properties": {
+          "query": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Echo of the searched name (trimmed)"
+              }
+            }
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Number of documents in matches (same as matches.length)"
+          },
+          "matches": {
+            "type": "array",
+            "description": "All matching records, newest first (createdAt descending). Each element follows ArtemisRecord with unified entityInformation branches.",
+            "items": {
+              "$ref": "#/components/schemas/ArtemisRecord"
+            }
+          }
+        }
+      },
+      "ArtemisRecord": {
+        "type": "object",
+        "required": ["_id", "metadata"],
+        "description": "MongoDB lean document for an Artemis case. For search-by-name responses, entityInformation always includes generalDetails, corporateSpecific, and individualSpecific objects (non-applicable branch is empty).",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "pattern": "^[0-9a-fA-F]{24}$",
+            "description": "MongoDB ObjectId"
+          },
+          "metadata": {
+            "type": "object",
+            "required": ["entityType"],
+            "properties": {
+              "entityType": {
+                "type": "string",
+                "enum": ["CORPORATE", "INDIVIDUAL"]
+              },
+              "caseId": { "type": "string" },
+              "customerId": { "type": "string" },
+              "caseStatus": { "type": "string" },
+              "approvalStatus": { "type": "string" },
+              "riskRating": { "type": "string" },
+              "nextPeriodicReviewCycleDate": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          },
+          "entityInformation": {
+            "type": "object",
+            "description": "General details and corporate- or individual-specific blocks",
+            "additionalProperties": true
+          },
+          "screeningAndSearchConclusion": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "riskAssessment": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "approvalHistory": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "modificationDetails": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  }
+}

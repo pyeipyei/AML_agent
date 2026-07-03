@@ -1,0 +1,21 @@
+{
+  "files": {
+    "1781836959684_SSM0110_Cenergi JLG Sdn Bhd (ID 43874) 1.pdf": {
+      "input_tokens": 2947,
+      "output_tokens": 1460,
+      "total_tokens": 4407
+    }
+  },
+  "agents": {
+    "SSM_agent": {
+      "input_tokens": 2947,
+      "output_tokens": 1460,
+      "total_tokens": 4407
+    }
+  },
+  "pipeline": {
+    "input_tokens": 2947,
+    "output_tokens": 1460,
+    "total_tokens": 4407
+  }
+}
