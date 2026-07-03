@@ -1,0 +1,141 @@
+[
+  {
+    "company_number": "202301044888(1538804-A)",
+    "company_profile": {
+      "company_profile": {
+        "company_name": "CENERGI JLG SDN. BHD.",
+        "registration_no": "202301044888(1538804-A)",
+        "incorporation_date": null,
+        "company_type": "PRIVATE LIMITED",
+        "legal_form": "LIMITED BY SHARES",
+        "status": "EXISTING",
+        "country_of_incorporation": "MALAYSIA",
+        "registered_address": "LEVEL 4, BLOCK E, DATARAN PHB, SAUJANA RESORT, SECTION U2, SHAH ALAM, SELANGOR, 40150",
+        "business_address": "LEVEL 4, BLOCK E, DATARAN PHB, SAUJANA RESORT, SECTION U2, SHAH ALAM, SELANGOR, 40150",
+        "principal_place_of_business": null,
+        "address_of_financial_records_if_any": "MENARA SSM@SENTRAL, NO.7, JALAN STESEN SENTRAL 5, KUALA LUMPUR SENTRAL, 50623 KUALA LUMPUR.",
+        "nature_of_business": "OPERATION OF GENERATION FACILITIES THAT PRODUCE ELECTRIC ENERGY; INSTALLATION OF NON-ELECTRIC SOLAR ENERGY COLLECTORS; ACTIVITIES OF HOLDING COMPANIES",
+        "msic_codes": null,
+        "source_documents": null
+      },
+      "management_and_control_persons": [
+        {
+          "full_name": "KWOK YEW HOE",
+          "role": "DIRECTOR",
+          "id_type": "IC",
+          "id_number": "740515-07-5401",
+          "date_of_birth": null,
+          "nationality": null,
+          "country_of_residence": "MALAYSIA",
+          "gender": null,
+          "occupation": null,
+          "residential_address": "WILAYAH PERSEKUTUAN 59200 KUALA LUMPUR, JALAN PANTAI MURNI 8, VILLA 13, SAVILLE AT THE PARK",
+          "service_address": null,
+          "email": null,
+          "source_documents": null
+        },
+        {
+          "full_name": "YEOH SOO MEI",
+          "role": "SECRETARY",
+          "id_type": "IC",
+          "id_number": "741108-14-5040",
+          "date_of_birth": null,
+          "nationality": null,
+          "country_of_residence": "MALAYSIA",
+          "gender": null,
+          "occupation": null,
+          "residential_address": "SELANGOR 47301 PETALING JAYA, KELANA JAYA, 64 JALAN SS5A/8",
+          "service_address": null,
+          "email": null,
+          "source_documents": null
+        },
+        {
+          "full_name": "RAZALI BIN HAMZAH",
+          "role": "DIRECTOR",
+          "id_type": "IC",
+          "id_number": "750715-01-5453",
+          "date_of_birth": null,
+          "nationality": null,
+          "country_of_residence": "MALAYSIA",
+          "gender": null,
+          "occupation": null,
+          "residential_address": "JOHOR 81800 ULU TIRAM, TAMAN BESTARI INDAH, NO. 32, JALAN BESTARI 35/2",
+          "service_address": null,
+          "email": null,
+          "source_documents": null
+        },
+        {
+          "full_name": "MOHAMAD FAIZAL BIN MOHAMAD",
+          "role": "DIRECTOR",
+          "id_type": "IC",
+          "id_number": "790504-09-5031",
+          "date_of_birth": null,
+          "nationality": null,
+          "country_of_residence": "MALAYSIA",
+          "gender": null,
+          "occupation": null,
+          "residential_address": "SELANGOR 40470 SHAH ALAM, ALAM IMPIAN, 35/32A, SEKSYEN 35, NO. 21 JALAN HANG NADIM",
+          "service_address": null,
+          "email": null,
+          "source_documents": null
+        },
+        {
+          "full_name": "NG WEI PIN",
+          "role": "DIRECTOR",
+          "id_type": "IC",
+          "id_number": "820919-14-5795",
+          "date_of_birth": null,
+          "nationality": null,
+          "country_of_residence": "MALAYSIA",
+          "gender": null,
+          "occupation": null,
+          "residential_address": "WILAYAH PERSEKUTUAN 52100 KUALA LUMPUR, TAMAN KEPONG, KEPONG, 1471 JALAN 36",
+          "service_address": null,
+          "email": null,
+          "source_documents": null
+        },
+        {
+          "full_name": "SHAMSUDDIN BIN SULAIMAN",
+          "role": "DIRECTOR",
+          "id_type": "IC",
+          "id_number": "750505-11-5237",
+          "date_of_birth": null,
+          "nationality": null,
+          "country_of_residence": "MALAYSIA",
+          "gender": null,
+          "occupation": null,
+          "residential_address": "JOHOR 85000 SEGAMAT, TAMAN YAYASAN, NO 1, JALAN BISTARI 4/22",
+          "service_address": null,
+          "email": null,
+          "source_documents": null
+        }
+      ],
+      "shareholders_and_members": [
+        {
+          "name": "CENERGI EE HOLDINGS SDN. BHD.",
+          "member_type": "CORPORATE",
+          "role": null,
+          "registration_no_or_id_no": "201801003648 (1265662-X)",
+          "nationality_or_country": null,
+          "address": null,
+          "shares_held": 650002,
+          "share_class": null,
+          "ownership_percent_if_available": null,
+          "source_documents": null
+        },
+        {
+          "name": "JLG INFRATECH SDN. BHD.",
+          "member_type": "CORPORATE",
+          "role": null,
+          "registration_no_or_id_no": "199001012163 (203733-T)",
+          "nationality_or_country": null,
+          "address": null,
+          "shares_held": 350000,
+          "share_class": null,
+          "ownership_percent_if_available": null,
+          "source_documents": null
+        }
+      ]
+    }
+  }
+]

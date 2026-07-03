@@ -1,0 +1,386 @@
+{
+  "screening_results": [
+    {
+      "queue_id": "SQ_001",
+      "company_id": "202301044888(1538804-A)",
+      "search_name": "CENERGI JLG SDN. BHD.",
+      "role": "CLIENT",
+      "entity_type_hint": "CORPORATE",
+      "api_call_status": "SUCCESS",
+      "artemis_result_status": "MATCHED_WITH_FLAGS",
+      "artemis_match_count": 1,
+      "selected_record_id": "6a291f3033dc27bb98455c66",
+      "matched_name": "CENERGI JLG SDN. BHD.",
+      "match_confidence": "HIGH",
+      "review_required": false,
+      "matched_profile": {
+        "entity_type": "CORPORATE",
+        "matched_name": "CENERGI JLG SDN. BHD.",
+        "customer_id": "202301044888 (1538804-A)",
+        "incorporation_number": "202301044888 (1538804-A)",
+        "country_of_incorporation": "MALAYSIA",
+        "country_of_operations": "MALAYSIA",
+        "corporate_entity_type": "CORPORATE",
+        "ownership_structure_layers": null,
+        "primary_business_activity": "OTHERS"
+      },
+      "screening_summary": {
+        "pep_flag": true,
+        "sanctions_flag": false,
+        "adverse_news_flag": false,
+        "own_restricted_list_flag": false,
+        "no_hit_flag": false,
+        "case_status": "COMPLETED",
+        "approval_status": "ACCEPTED",
+        "metadata_risk_rating": "HIGH RISK",
+        "computed_risk_rating": "HIGH RISK",
+        "override_risk_rating": "HIGH RISK",
+        "total_risk_score_percentage": 54.33,
+        "next_periodic_review_cycle_date": "2026-07-03",
+        "summary_last_updated": "2026-06-18T05:27:08.357Z",
+        "screening_officer_name": "MAU CHEE THAM"
+      },
+      "screening_evidence": [
+        {
+          "source_list": "WORLD-CHECK",
+          "matched_indicator": "☐",
+          "categories": [
+            "PEP"
+          ],
+          "countries": [
+            "REGISTEREDIN: MALAYSIA LOCATION: MALAYSIA"
+          ],
+          "match_strength": "MEDIUM",
+          "match_type": "",
+          "comments": "exact name not match, this is the holding company."
+        }
+      ],
+      "narrative_conclusion": "The match confidence level is HIGH as there is an exact registration number match identified. PEP flag exists but no sanctions, adverse news, or restricted flags are found. This is not a true no-hit."
+    },
+    {
+      "queue_id": "SQ_002",
+      "company_id": "202301044888(1538804-A)",
+      "search_name": "KWOK YEW HOE",
+      "role": "DIRECTOR",
+      "entity_type_hint": "INDIVIDUAL",
+      "api_call_status": "SUCCESS",
+      "artemis_result_status": "MATCHED_WITH_FLAGS",
+      "artemis_match_count": 1,
+      "selected_record_id": "6a291f1c33dc27bb98455c54",
+      "matched_name": "KWOK YEW HOE",
+      "match_confidence": "HIGH",
+      "review_required": false,
+      "matched_profile": {
+        "entity_type": "INDIVIDUAL",
+        "matched_name": "KWOK YEW HOE",
+        "customer_id": "740515-07-5401",
+        "identification_number": "740515-07-5401",
+        "date_of_birth": "1974-05-15T00:00:00.000Z",
+        "nationality": "MALAYSIA",
+        "country_of_residence": "MALAYSIA",
+        "occupation": "Senior Official - SOE",
+        "industry": ""
+      },
+      "screening_summary": {
+        "pep_flag": true,
+        "sanctions_flag": false,
+        "adverse_news_flag": false,
+        "own_restricted_list_flag": false,
+        "no_hit_flag": false,
+        "case_status": "",
+        "approval_status": "CURRENT",
+        "metadata_risk_rating": "",
+        "computed_risk_rating": "",
+        "override_risk_rating": "",
+        "total_risk_score_percentage": 0,
+        "next_periodic_review_cycle_date": null,
+        "summary_last_updated": "2025-05-29T16:30:28.000Z",
+        "screening_officer_name": "NUR FARHANA BINTI TAMRIN"
+      },
+      "screening_evidence": [
+        {
+          "source_list": "WORLD-CHECK",
+          "matched_indicator": "☑",
+          "categories": [
+            "PEP"
+          ],
+          "countries": [
+            "NATIONALITY: MALAYSIA, LOCATION: MALAYSIA, POB: MALAYSIA"
+          ],
+          "match_strength": "EXACT",
+          "match_type": "TRUE HIT",
+          "comments": "True match based on the exact full name, date of birth and ID no. He is domestic PEP based on the senior management position in SOE."
+        }
+      ],
+      "narrative_conclusion": "The screening for KWOK YEW HOE has resulted in a high confidence match based on the exact full name, ID number, and date of birth. The individual is identified as a domestic Politically Exposed Person (PEP) due to his current role as a Senior Official in a state-owned enterprise. There are no sanctions or adverse news flags. No manual review is required."
+    },
+    {
+      "queue_id": "SQ_003",
+      "company_id": "202301044888(1538804-A)",
+      "search_name": "YEOH SOO MEI",
+      "role": "SECRETARY",
+      "entity_type_hint": "INDIVIDUAL",
+      "api_call_status": "SUCCESS",
+      "artemis_result_status": "NO_RECORD_FOUND",
+      "artemis_match_count": 0,
+      "selected_record_id": "",
+      "matched_name": "",
+      "match_confidence": "",
+      "review_required": false,
+      "matched_profile": {},
+      "screening_summary": {},
+      "screening_evidence": [],
+      "narrative_conclusion": "No records found for the search name 'YEOH SOO MEI'. It is a clear no-hit."
+    },
+    {
+      "queue_id": "SQ_004",
+      "company_id": "202301044888(1538804-A)",
+      "search_name": "RAZALI BIN HAMZAH",
+      "role": "DIRECTOR",
+      "entity_type_hint": "INDIVIDUAL",
+      "api_call_status": "SUCCESS",
+      "artemis_result_status": "MATCHED_WITH_FLAGS",
+      "artemis_match_count": 1,
+      "selected_record_id": "6a291f3033dc27bb98455c64",
+      "matched_name": "RAZALI BIN HAMZAH",
+      "match_confidence": "HIGH",
+      "review_required": false,
+      "matched_profile": {
+        "entity_type": "INDIVIDUAL",
+        "matched_name": "RAZALI BIN HAMZAH",
+        "customer_id": "750715015453",
+        "identification_number": "750715015453",
+        "date_of_birth": null,
+        "nationality": "MALAYSIA",
+        "country_of_residence": "MALAYSIA",
+        "occupation": "",
+        "industry": ""
+      },
+      "screening_summary": {
+        "pep_flag": true,
+        "sanctions_flag": false,
+        "adverse_news_flag": false,
+        "own_restricted_list_flag": false,
+        "no_hit_flag": false,
+        "case_status": "",
+        "approval_status": "",
+        "metadata_risk_rating": "",
+        "computed_risk_rating": "",
+        "override_risk_rating": "",
+        "total_risk_score_percentage": 0,
+        "next_periodic_review_cycle_date": "2025-10-01T22:21:16.000Z",
+        "summary_last_updated": "2025-10-01T22:21:16.000Z",
+        "screening_officer_name": "MAU CHEE THAM"
+      },
+      "screening_evidence": [
+        {
+          "source_list": "WORLD-CHECK",
+          "matched_indicator": "☑",
+          "categories": [
+            "PEP"
+          ],
+          "countries": [
+            "NATIONALITY: MALAYSIA LOCATION: MALAYSIA"
+          ],
+          "match_strength": "EXACT",
+          "match_type": "TRUE HIT",
+          "comments": "True match because exact name and dob match"
+        }
+      ],
+      "narrative_conclusion": "The match confidence level is HIGH as an exact name and identification number match was found. A true match was identified with PEP flags present. No sanctions, adverse, or restricted flags exist, thus it is not a true no-hit. Review is not required."
+    },
+    {
+      "queue_id": "SQ_005",
+      "company_id": "202301044888(1538804-A)",
+      "search_name": "MOHAMAD FAIZAL BIN MOHAMAD",
+      "role": "DIRECTOR",
+      "entity_type_hint": "INDIVIDUAL",
+      "api_call_status": "successful",
+      "artemis_result_status": "MATCHED_WITH_FLAGS",
+      "artemis_match_count": 1,
+      "selected_record_id": "6a291f3033dc27bb98455c62",
+      "matched_name": "MOHAMAD FAIZAL BIN MOHAMAD",
+      "match_confidence": "HIGH",
+      "review_required": false,
+      "matched_profile": {
+        "entity_type": "INDIVIDUAL",
+        "matched_name": "MOHAMAD FAIZAL BIN MOHAMAD",
+        "customer_id": "790504-09-5031",
+        "identification_number": "790504-09-5031",
+        "date_of_birth": null,
+        "nationality": "MALAYSIA",
+        "country_of_residence": "MALAYSIA",
+        "occupation": "",
+        "industry": ""
+      },
+      "screening_summary": {
+        "pep_flag": true,
+        "sanctions_flag": false,
+        "adverse_news_flag": false,
+        "own_restricted_list_flag": false,
+        "no_hit_flag": false,
+        "case_status": "",
+        "approval_status": "",
+        "metadata_risk_rating": "",
+        "computed_risk_rating": "",
+        "override_risk_rating": "",
+        "total_risk_score_percentage": 0,
+        "next_periodic_review_cycle_date": "",
+        "summary_last_updated": "2025-10-01T22:23:19.000Z",
+        "screening_officer_name": "MAU CHEE THAM"
+      },
+      "screening_evidence": [
+        {
+          "source_list": "WORLD-CHECK",
+          "matched_indicator": "☑",
+          "categories": [
+            "PEP"
+          ],
+          "countries": [
+            "NATIONALITY: MALAYSIA LOCATION: MALAYSIA"
+          ],
+          "match_strength": "EXACT",
+          "match_type": "TRUE HIT",
+          "comments": "true hit, exact name, ID and DOB match"
+        }
+      ],
+      "narrative_conclusion": "The screening returned a HIGH confidence match for the individual MOHAMAD FAIZAL BIN MOHAMAD. A true match was identified with PEP flags present. There were no sanctions, adverse news, or restricted list flags. This does not constitute a true no-hit and does not require a manual review."
+    },
+    {
+      "queue_id": "SQ_006",
+      "company_id": "202301044888(1538804-A)",
+      "search_name": "NG WEI PIN",
+      "role": "DIRECTOR",
+      "entity_type_hint": "INDIVIDUAL",
+      "api_call_status": "SUCCESS",
+      "artemis_result_status": "MATCHED_RECORD_NO_HIT",
+      "artemis_match_count": 1,
+      "selected_record_id": "6a291f3033dc27bb98455c60",
+      "matched_name": "NG WEI PIN",
+      "match_confidence": "HIGH",
+      "review_required": false,
+      "matched_profile": {
+        "entity_type": "INDIVIDUAL",
+        "matched_name": "NG WEI PIN",
+        "customer_id": "820919145795",
+        "identification_number": "820919145795",
+        "date_of_birth": "1982-09-19",
+        "nationality": "MALAYSIA",
+        "country_of_residence": "MALAYSIA",
+        "occupation": "",
+        "industry": ""
+      },
+      "screening_summary": {
+        "pep_flag": false,
+        "sanctions_flag": false,
+        "adverse_news_flag": false,
+        "own_restricted_list_flag": false,
+        "no_hit_flag": true,
+        "case_status": "",
+        "approval_status": "",
+        "metadata_risk_rating": "",
+        "computed_risk_rating": "",
+        "override_risk_rating": "",
+        "total_risk_score_percentage": 0,
+        "next_periodic_review_cycle_date": null,
+        "summary_last_updated": "2025-10-02T09:59:32.000Z",
+        "screening_officer_name": "MAU CHEE THAM"
+      },
+      "screening_evidence": [],
+      "narrative_conclusion": "Match confidence level is HIGH. A true match has been identified for NG WEI PIN. There are no PEP, sanctions, adverse, or restricted flags. It is a true no-hit scenario with no further manual review required."
+    },
+    {
+      "queue_id": "SQ_007",
+      "company_id": "202301044888(1538804-A)",
+      "search_name": "SHAMSUDDIN BIN SULAIMAN",
+      "role": "DIRECTOR",
+      "entity_type_hint": "INDIVIDUAL",
+      "api_call_status": "successful",
+      "artemis_result_status": "MATCHED_RECORD_NO_HIT",
+      "artemis_match_count": 1,
+      "selected_record_id": "6a291f0133dc27bb98455c3c",
+      "matched_name": "SHAMSUDDIN BIN SULAIMAN",
+      "match_confidence": "HIGH",
+      "review_required": false,
+      "matched_profile": {
+        "entity_type": "INDIVIDUAL",
+        "matched_name": "SHAMSUDDIN BIN SULAIMAN",
+        "customer_id": "750505115237",
+        "identification_number": "750505115237",
+        "date_of_birth": "1975-05-05",
+        "nationality": "MALAYSIA",
+        "country_of_residence": "MALAYSIA",
+        "occupation": "",
+        "industry": ""
+      },
+      "screening_summary": {
+        "pep_flag": false,
+        "sanctions_flag": false,
+        "adverse_news_flag": false,
+        "own_restricted_list_flag": false,
+        "no_hit_flag": true,
+        "case_status": "",
+        "approval_status": "",
+        "metadata_risk_rating": "",
+        "computed_risk_rating": "",
+        "override_risk_rating": "",
+        "total_risk_score_percentage": 0,
+        "next_periodic_review_cycle_date": "",
+        "summary_last_updated": "2025-02-26T16:38:08.000Z",
+        "screening_officer_name": "PUTERI NURSYAFIQAH BINTI MEGAT AZIZI"
+      },
+      "screening_evidence": [],
+      "narrative_conclusion": "The search resulted in a high-confidence match for 'SHAMSUDDIN BIN SULAIMAN'. No PEP, sanctions, adverse, or restricted flags were identified, indicating a true no-hit status. Manual review is not required."
+    },
+    {
+      "queue_id": "SQ_008",
+      "company_id": "202301044888(1538804-A)",
+      "search_name": "CENERGI EE HOLDINGS SDN. BHD.",
+      "role": "SHAREHOLDER",
+      "entity_type_hint": "CORPORATE",
+      "api_call_status": "SUCCESS",
+      "artemis_result_status": "NO_RECORD_FOUND",
+      "artemis_match_count": 0,
+      "selected_record_id": "",
+      "matched_name": "",
+      "match_confidence": "",
+      "review_required": false,
+      "matched_profile": {},
+      "screening_summary": {},
+      "screening_evidence": [],
+      "narrative_conclusion": "No records found for the search name 'CENERGI EE HOLDINGS SDN. BHD.'. This indicates a true no-hit situation."
+    },
+    {
+      "queue_id": "SQ_009",
+      "company_id": "202301044888(1538804-A)",
+      "search_name": "JLG INFRATECH SDN. BHD.",
+      "role": "SHAREHOLDER",
+      "entity_type_hint": "CORPORATE",
+      "api_call_status": "SUCCESS",
+      "artemis_result_status": "NO_RECORD_FOUND",
+      "artemis_match_count": 0,
+      "selected_record_id": "",
+      "matched_name": "",
+      "match_confidence": "",
+      "review_required": false,
+      "matched_profile": {},
+      "screening_summary": {},
+      "screening_evidence": [],
+      "narrative_conclusion": "No records were found for JLG INFRATECH SDN. BHD., indicating a successful no-hit screening."
+    }
+  ],
+  "summary": {
+    "total_entities_searched": 1,
+    "successful_calls": 1,
+    "api_errors": 0,
+    "confirmed_matches": 0,
+    "ambiguous_matches": 0,
+    "low_confidence_matches": 0,
+    "no_record_found": 1,
+    "pep_hits": 0,
+    "sanctions_hits": 0,
+    "adverse_news_hits": 0,
+    "restricted_list_hits": 0
+  },
+  "processing_notes": []
+}

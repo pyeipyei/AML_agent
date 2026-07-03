@@ -1,21 +1,106 @@
 {
-  "files": {
+  "documents": {
     "1781836959684_SSM0110_Cenergi JLG Sdn Bhd (ID 43874) 1.pdf": {
-      "input_tokens": 2947,
-      "output_tokens": 1460,
-      "total_tokens": 4407
+      "company_number": "202301044888(1538804-A)",
+      "agents": {
+        "SSM_agent": {
+          "input_tokens": 3476,
+          "output_tokens": 1516,
+          "total_tokens": 4992
+        },
+        "artemis_agent": {
+          "input_tokens": 39898,
+          "output_tokens": 5005,
+          "total_tokens": 44903
+        }
+      },
+      "screening_queues": {
+        "SQ_001": {
+          "search_name": "CENERGI JLG SDN. BHD.",
+          "agent": "artemis_agent",
+          "input_tokens": 5743,
+          "output_tokens": 746,
+          "total_tokens": 6489
+        },
+        "SQ_002": {
+          "search_name": "KWOK YEW HOE",
+          "agent": "artemis_agent",
+          "input_tokens": 5223,
+          "output_tokens": 777,
+          "total_tokens": 6000
+        },
+        "SQ_003": {
+          "search_name": "YEOH SOO MEI",
+          "agent": "artemis_agent",
+          "input_tokens": 3258,
+          "output_tokens": 233,
+          "total_tokens": 3491
+        },
+        "SQ_004": {
+          "search_name": "RAZALI BIN HAMZAH",
+          "agent": "artemis_agent",
+          "input_tokens": 4712,
+          "output_tokens": 710,
+          "total_tokens": 5422
+        },
+        "SQ_005": {
+          "search_name": "MOHAMAD FAIZAL BIN MOHAMAD",
+          "agent": "artemis_agent",
+          "input_tokens": 5195,
+          "output_tokens": 723,
+          "total_tokens": 5918
+        },
+        "SQ_006": {
+          "search_name": "NG WEI PIN",
+          "agent": "artemis_agent",
+          "input_tokens": 4450,
+          "output_tokens": 602,
+          "total_tokens": 5052
+        },
+        "SQ_007": {
+          "search_name": "SHAMSUDDIN BIN SULAIMAN",
+          "agent": "artemis_agent",
+          "input_tokens": 4771,
+          "output_tokens": 634,
+          "total_tokens": 5405
+        },
+        "SQ_008": {
+          "search_name": "CENERGI EE HOLDINGS SDN. BHD.",
+          "agent": "artemis_agent",
+          "input_tokens": 3274,
+          "output_tokens": 248,
+          "total_tokens": 3522
+        },
+        "SQ_009": {
+          "search_name": "JLG INFRATECH SDN. BHD.",
+          "agent": "artemis_agent",
+          "input_tokens": 3272,
+          "output_tokens": 332,
+          "total_tokens": 3604
+        }
+      },
+      "totals": {
+        "input_tokens": 43374,
+        "output_tokens": 6521,
+        "total_tokens": 49895
+      }
     }
   },
   "agents": {
     "SSM_agent": {
-      "input_tokens": 2947,
-      "output_tokens": 1460,
-      "total_tokens": 4407
+      "input_tokens": 3476,
+      "output_tokens": 1516,
+      "total_tokens": 4992
+    },
+    "artemis_agent": {
+      "input_tokens": 39898,
+      "output_tokens": 5005,
+      "total_tokens": 44903
     }
   },
   "pipeline": {
-    "input_tokens": 2947,
-    "output_tokens": 1460,
-    "total_tokens": 4407
+    "input_tokens": 43374,
+    "output_tokens": 6521,
+    "total_tokens": 49895
   }
 }
