@@ -32,97 +32,6 @@ APP_NAME = "document_extractor"
 SCREENING_APP_NAME = "artemis_screening"
 USER_ID = "system"
 
-token_usage = {
-    "files": {},
-    "agents": {},
-    "pipeline": {
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0,
-    }
-}
-
-def log_event_tokens(event, label: str = "", file_path: str = ""):
-    usage = getattr(event, "usage_metadata", None)
-    author = getattr(event, "author", "unknown")
-
-    if usage is None:
-        print(
-            f"[{label}] file={os.path.basename(file_path)} "
-            f"author={author} final={event.is_final_response()} "
-            "(no usage_metadata)"
-        )
-        return (
-            file_path,
-            author,
-            0, 0, 0, 0, 0,
-        )
-
-    input_tokens = getattr(usage, "prompt_token_count", 0)
-    output_tokens = getattr(usage, "candidates_token_count", 0)
-    total_tokens = getattr(usage, "total_token_count", 0)
-    cached_tokens = getattr(usage, "cached_content_token_count", 0)
-    thoughts_tokens = getattr(usage, "thoughts_token_count", 0)
-
-    print(
-        f"[{label}] file={os.path.basename(file_path)} "
-        f"author={author} "
-        f"in={input_tokens} out={output_tokens} total={total_tokens}"
-    )
-
-    return (
-        file_path,
-        author,
-        input_tokens,
-        output_tokens,
-        total_tokens,
-        cached_tokens,
-        thoughts_tokens,
-    )
-
-def update_token_usage(
-    file_path: str,
-    author: str,
-    input_tokens: int,
-    output_tokens: int,
-    total_tokens: int,
-):
-    filename = os.path.basename(file_path) if file_path else "Unknown"
-
-    # ---------------- File totals ----------------
-    if filename not in token_usage["files"]:
-        token_usage["files"][filename] = {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "total_tokens": 0,
-        }
-
-    token_usage["files"][filename]["input_tokens"] += input_tokens
-    token_usage["files"][filename]["output_tokens"] += output_tokens
-    token_usage["files"][filename]["total_tokens"] += total_tokens
-
-    # ---------------- Agent totals ----------------
-    if author not in token_usage["agents"]:
-        token_usage["agents"][author] = {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "total_tokens": 0,
-        }
-
-    token_usage["agents"][author]["input_tokens"] += input_tokens
-    token_usage["agents"][author]["output_tokens"] += output_tokens
-    token_usage["agents"][author]["total_tokens"] += total_tokens
-
-    # ---------------- Pipeline totals ----------------
-    token_usage["pipeline"]["input_tokens"] += input_tokens
-    token_usage["pipeline"]["output_tokens"] += output_tokens
-    token_usage["pipeline"]["total_tokens"] += total_tokens
-
-def save_token_usage(path=TOKEN_PATH):
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(token_usage, f, indent=2)
 
 #------------------Extraction agents-------------------------
 ssm_runner = Runner(app_name=APP_NAME, agent=SSM_agent, session_service=session_service)
@@ -170,26 +79,9 @@ async def process_pdf(file_path: str, file_type: str):
         session_id=session.id,
         new_message=message,
     ):
-        # if event.is_final_response() and event.content.parts:
-        #     final_json = event.content.parts[0].text
-        
-        # file_path, author, in_tok, out_tok, total_tok, cached_tok, thoughts_tok  = log_event_tokens(event, label="process_pdf")
-
-        _, author, in_tok, out_tok, total_tok, _, _ = log_event_tokens(
-        event,
-        label="process_pdf",
-        file_path=file_path,
-    )
-
-    update_token_usage(
-        file_path=file_path,
-        author=author,
-        input_tokens=in_tok,
-        output_tokens=out_tok,
-        total_tokens=total_tok,
-    )
-        
-
+        if event.is_final_response() and event.content.parts:
+            final_json = event.content.parts[0].text
+       
     return final_json
 
 #-----------------Screening helpers--------------------------
@@ -216,25 +108,7 @@ async def screen_entry(entry: dict) -> dict:
     ):
         if event.is_final_response() and event.content.parts:
             final_text = event.content.parts[0].text
-        
-        screen_name = "temp"
-
-        #file_path, author, in_tok, out_tok, total_tok, cached_tok, thoughts_tok = log_event_tokens(event, label="screen_entry")
-
-        _, author, in_tok, out_tok, total_tok, _, _ = log_event_tokens(
-        event,
-        label="screen_entry",
-        file_path=screen_name,
-    )
-
-    update_token_usage(
-        file_path=screen_name,
-        author=author,
-        input_tokens=in_tok,
-        output_tokens=out_tok,
-        total_tokens=total_tok,
-    )
-
+           
     if final_text is None:
         raise RuntimeError(f"No response from agent for queue_id={entry.get('queue_id')}")
     
@@ -307,8 +181,6 @@ async def run_pipeline(uploads_dir: str):
 
         except Exception as e:
             print(f"Error processing {pdf_path}: {e}")
-
-        save_token_usage(TOKEN_PATH)
 
 
     data = extract_data(JSON_PATH, RESULTS_PATH)
