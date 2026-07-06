@@ -1,5 +1,4 @@
-from pathlib import Path
-import fitz 
+from pathlib import Path 
 import os
 import fitz 
 from typing import Optional

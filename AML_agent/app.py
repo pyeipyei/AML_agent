@@ -6,6 +6,7 @@ through the ADK multi-agent pipeline, and downloading summaries.
 """
 
 import streamlit as st
+import streamlit.components.v1 as components
 import os
 import shutil
 from main import run_pipeline
@@ -366,7 +367,7 @@ with right_col:
 
     OUTPUT_PDF_PATH = os.path.join(BASE_DIR, "output", "result_KYC.pdf")
 
-    if st.session_state.get("final_result") and os.path.exists(OUTPUT_PDF_PATH):
+    if os.path.exists(OUTPUT_PDF_PATH):
         with open(OUTPUT_PDF_PATH, "rb") as f:
             pdf_bytes = f.read()
 
@@ -379,17 +380,17 @@ with right_col:
             use_container_width=True,
         )
 
-        # Inline preview via base64-embedded iframe
+        # Inline preview via base64-embedded iframe using components.html
+        # (st.markdown sanitises data: URIs, so the iframe never rendered)
         base64_pdf = base64.b64encode(pdf_bytes).decode("utf-8")
         pdf_display = f"""
         <iframe
             src="data:application/pdf;base64,{base64_pdf}"
             width="100%"
             height="600"
-            style="border: none; border-radius: 8px;"
-            type="application/pdf">
+            style="border: none; border-radius: 8px;">
         </iframe>
         """
-        st.markdown(pdf_display, unsafe_allow_html=True)
+        components.html(pdf_display, height=620, scrolling=False)
     else:
-        st.info("Upload and process documents to see the KYC report here.")
+        st.info("Upload and process documents to see the KYC report here.")
